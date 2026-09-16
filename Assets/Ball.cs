@@ -23,8 +23,19 @@ public class Ball : MonoBehaviour
         ResetBall();
     }
 
+
+    void Update()
+    {
+        if (ScoreManager.Instance != null && ScoreManager.Instance.MatchOver) 
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (ScoreManager.Instance != null && ScoreManager.Instance.MatchOver)
+            return; // partido terminado, no hacer nada más
+
         if (other.CompareTag("LeftWall"))
         {
 
@@ -52,6 +63,8 @@ rb.linearVelocity = direction * speed;
 }
     void OnCollisionEnter2D(Collision2D collision)
     {
+ 
+
         rb.linearVelocity *= speedMultiplier;
         if (rb.linearVelocity.magnitude > maxSpeed)
         {

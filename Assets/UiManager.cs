@@ -35,6 +35,9 @@ public class UiManager : MonoBehaviour
     [Header("Fondos")]
     [SerializeField] private GameObject menuBackground;
     [SerializeField] private GameObject gameBackground;
+    [SerializeField] private GameObject scoreboardCanvas;  //canvasGame
+
+
     private bool isPaused = false;
     private bool gameStarted = false;
 
@@ -68,6 +71,7 @@ public class UiManager : MonoBehaviour
         player2Object.SetActive(false);
         menuBackground.SetActive(true);
         gameBackground.SetActive(false);
+        scoreboardCanvas.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -90,6 +94,7 @@ public class UiManager : MonoBehaviour
         gameStarted = true;
         menuBackground.SetActive(false);
         gameBackground.SetActive(true);
+        scoreboardCanvas.SetActive(true);
         Time.timeScale = 1f;
 
         }
